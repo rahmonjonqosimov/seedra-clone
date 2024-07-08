@@ -23,7 +23,7 @@ interface Schema {
 
 const HomePage: React.FC = () => {
   const [category, setCategory] = useState<string>(
-    localStorage.getItem("category") || ""
+    sessionStorage.getItem("category") || ""
   );
   const params = { limit: 6 };
 

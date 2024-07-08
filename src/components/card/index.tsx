@@ -15,7 +15,9 @@ const ProductCard: React.FC<ProductCardPropsSchema> = ({ data }) => {
     <div className="product__card">
       <div className="product__image">
         <img
-          onClick={() => navigate(`/product/${data?.id}`)}
+          onClick={() => {
+            navigate(`/product/${data?.id}/${data?.category}`);
+          }}
           src={data?.images[0]}
           alt={data?.title}
         />

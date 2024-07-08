@@ -18,7 +18,7 @@ const CategoryComponent: React.FC<CategoryComponentProps> = ({
   ) => {
     const { value } = e.currentTarget;
     setCategory(value);
-    localStorage.setItem("category", value);
+    sessionStorage.setItem("category", value);
   };
 
   const categoryItem: JSX.Element[] | undefined = data?.map(
@@ -44,7 +44,9 @@ const CategoryComponent: React.FC<CategoryComponentProps> = ({
         <ul className="category__items">
           <li>
             <data
-              onClick={() => setCategory("")}
+              onClick={() => {
+                setCategory(""), sessionStorage.setItem("category", "");
+              }}
               value={""}
               style={{
                 background: item === "" ? "#359740" : "#fff",

@@ -1,4 +1,15 @@
-#products-section {
+.products-section {
+  h1 {
+    //styleName: H2 semibold 36;
+    font-family: Lexend;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 54px;
+    letter-spacing: -0.05em;
+    text-align: left;
+    color: #1f2533;
+    margin: 32px 0 40px;
+  }
   .product__wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

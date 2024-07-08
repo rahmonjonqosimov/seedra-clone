@@ -121,6 +121,7 @@
         }
       }
       .detail__row {
+        margin-bottom: 8px;
         .detail__price {
           span {
             font-size: 16px;
@@ -169,6 +170,47 @@
             &:active {
               transform: scale(0.95);
             }
+          }
+        }
+      }
+      label {
+        width: 100%;
+        border: 1px solid #efefef;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        cursor: pointer;
+        .label__text {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          gap: 10px;
+          p {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24.95px;
+            color: #70737c;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            span {
+              font-size: 16px;
+              font-weight: 500;
+              line-height: 28.51px;
+              letter-spacing: -0.035em;
+              color: #1f2533;
+            }
+          }
+          h5 {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24.95px;
+            color: #1f2533;
+            margin-left: 13px;
           }
         }
       }

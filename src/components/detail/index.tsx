@@ -9,8 +9,6 @@ interface DetailContentProps {
 }
 
 const DetailContent: React.FC<DetailContentProps> = ({ data }) => {
-  console.log(data);
-
   return (
     <section id="detail">
       <div className="container">
@@ -48,10 +46,60 @@ const DetailContent: React.FC<DetailContentProps> = ({ data }) => {
                 </button>
               </div>
             </div>
-            <div className="detail__row">
+            <label htmlFor="radio1">
+              <input type="radio" id="radio1" name="radio" />
+              <div className="label__text">
+                <h5>1 pack</h5>
+                <p>
+                  {" "}
+                  start from <span>$1,56</span>
+                </p>
+              </div>
+            </label>
+            <label htmlFor="radio2">
+              <input type="radio" id="radio2" name="radio" />
+              <div className="label__text">
+                <h5>2 pack</h5>
+                <p>
+                  {" "}
+                  start from <span>$1,56</span>
+                </p>
+              </div>
+            </label>
+            <label htmlFor="radio3">
+              <input type="radio" id="radio3" name="radio" />
+              <div className="label__text">
+                <h5>3 pack</h5>
+                <p>
+                  {" "}
+                  start from <span>$1,56</span>
+                </p>
+              </div>
+            </label>
+            <label htmlFor="radio4">
+              <input type="radio" id="radio4" name="radio" />
+              <div className="label__text">
+                <h5>4 pack</h5>
+                <p>
+                  {" "}
+                  start from <span>$1,56</span>
+                </p>
+              </div>
+            </label>
+            <label htmlFor="radio5">
+              <input type="radio" id="radio5" name="radio" />
+              <div className="label__text">
+                <h5>5 pack</h5>
+                <p>
+                  {" "}
+                  start from <span>$1,56</span>
+                </p>
+              </div>
+            </label>
+            <div style={{ marginTop: "24px" }} className="detail__row">
               <div className="detail__price">
-                <span>$15.56</span>
-                <h3>$12.56</h3>
+                <span>${data?.price}</span>
+                <h3>${data?.price}</h3>
               </div>
               <div className="wishes__cart">
                 <button className="wishes__btn">

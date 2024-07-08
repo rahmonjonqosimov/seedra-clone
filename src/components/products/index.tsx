@@ -13,7 +13,7 @@ const ProductsSection: React.FC<ProductsPropsSchema> = ({ data }) => {
   );
 
   return (
-    <section id="products-section">
+    <section className="products-section">
       <div className="container">
         <div className="product__wrapper">{products}</div>
       </div>
