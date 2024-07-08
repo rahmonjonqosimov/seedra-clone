@@ -1,0 +1,177 @@
+#detail {
+  margin: 24px 0 50px;
+  .detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    .detail__image {
+      display: flex;
+      flex-direction: column;
+      .img {
+        width: 100%;
+        height: 450px;
+        background: #fcfcfc;
+        border-radius: 12px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      .img__wrapper__detail {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        margin-top: 22px;
+        img {
+          width: 100%;
+          border-radius: 12px;
+          background: #fcfcfc;
+          height: 67px;
+          object-fit: contain;
+        }
+      }
+    }
+    .detail__text {
+      h2 {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 31.5px;
+        letter-spacing: -0.02em;
+        color: #1f2533;
+      }
+      span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .detail__aviable {
+          //styleName: Regular 14;
+          font-family: Lexend;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 24.95px;
+          text-align: left;
+          color: #4fa083;
+          padding: 7px 25px;
+          background: #35974014;
+          display: inline-block;
+          margin-right: 20px;
+          border-radius: 120px;
+          gap: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          svg {
+            font-size: 20px;
+          }
+        }
+        .detail__category {
+          padding: 7px 25px;
+          border: 1px solid #efefef;
+          border-radius: 120px;
+          display: inline-block;
+          margin: 15px 0 22px;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 24.95px;
+          padding: 7px 25px;
+          color: #1f2533;
+        }
+      }
+      .detail__row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .detail__quantity {
+          height: 44px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          width: 120px;
+          border: 1px solid #efefef;
+          border-radius: 11px;
+          overflow: hidden;
+          button {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            svg {
+              color: #359740;
+              font-size: 20px;
+            }
+          }
+          span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: #35974014;
+            place-self: center;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 28.51px;
+            letter-spacing: -0.035em;
+            color: #359740;
+          }
+        }
+      }
+      .detail__row {
+        .detail__price {
+          span {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 28.51px;
+            letter-spacing: -0.035em;
+            color: #70737c;
+          }
+          h3 {
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 38.5px;
+            color: #1f2533;
+          }
+        }
+        .wishes__cart {
+          height: 50px;
+          display: flex;
+          gap: 12px;
+          .wishes__btn {
+            padding: 12px;
+            border: 1px solid #efefef;
+            background: transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            svg {
+              font-size: 24px;
+              color: #359740;
+            }
+          }
+          .cart__btn {
+            padding: 11px 33px;
+            background: #359740;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 28.51px;
+            letter-spacing: -0.035em;
+            color: #fff;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+            &:hover {
+              background: #23792d;
+            }
+            &:active {
+              transform: scale(0.95);
+            }
+          }
+        }
+      }
+    }
+  }
+}

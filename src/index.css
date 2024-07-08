@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1142px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+
+@font-face {
+  font-family: "Lexend";
+  src: url("./fonts/Lexend-Regular.ttf");
+}
+
+body {
+  font-family: "Lexend";
+}
