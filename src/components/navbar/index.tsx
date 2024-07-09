@@ -2,15 +2,19 @@ import React from "react";
 import "./index.scss";
 import logo from "../../assets/images/icons/logo.svg";
 import { Link, NavLink } from "react-router-dom";
+import { BsCart, BsHeart } from "react-icons/bs";
+import { useSelector } from "react-redux";
+
 import {
   BiLogoFacebookCircle,
   BiLogoInstagramAlt,
   BiSearch,
-  BiHeart,
-  BiCart,
 } from "react-icons/bi";
 
 const Navbar: React.FC = () => {
+  const cart = useSelector((s: any) => s.cart.value);
+  const wishlist = useSelector((s: any) => s.wishlist.value);
+
   return (
     <section id="navbar">
       <div className="container">
@@ -51,12 +55,14 @@ const Navbar: React.FC = () => {
           <ul className="cart__and__wishes">
             <li>
               <Link to={"/wishlist"}>
-                <BiHeart />
+                <BsHeart />
+                <sup>{wishlist.length}</sup>
               </Link>
             </li>
             <li>
               <Link to={"/cart"}>
-                <BiCart />
+                <BsCart />
+                <sup>{cart.length}</sup>
               </Link>
             </li>
           </ul>

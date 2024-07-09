@@ -31,6 +31,9 @@ export interface getProductCategories {
 export interface getProductByIdSchema {
   id: string;
 }
+export interface getProductSerach {
+  q: string;
+}
 
 export const apiSlice = createApi({
   reducerPath: "api",
@@ -58,6 +61,12 @@ export const apiSlice = createApi({
       }),
       providesTags: ["Products"],
     }),
+    getProductSearch: builder.query<any, getProductSerach>({
+      query: ({ q }) => ({
+        url: `products/search?q=${q}`,
+      }),
+      providesTags: ["Products"],
+    }),
   }),
 });
 
@@ -65,4 +74,5 @@ export const {
   useGetProductsQuery,
   useGetProductCategoriesQuery,
   useGetProductByIdQuery,
+  useGetProductSearchQuery,
 } = apiSlice;

@@ -4,10 +4,10 @@ import BannerSection from "../../components/banner";
 import ProductsSection from "../../components/products";
 import { useGetProductsQuery } from "../../context/api/api";
 import CategoryComponent from "../../components/category";
-import SingleRouteSkeleton from "../../components/loading/circle-loading";
 import BlogSection from "../../components/blog";
 import Client from "../../components/client";
 import AboutPosts from "../../components/about-posts";
+import ProductCardSkeleton from "../../components/loading/product-skeleton";
 
 interface Schema {
   id: number;
@@ -29,7 +29,7 @@ const HomePage: React.FC = () => {
 
   const path = category ? `/category/${category}` : "";
 
-  const { data, isFetching } = useGetProductsQuery({
+  const { data, isFetching, isLoading } = useGetProductsQuery({
     ...params,
     url: path,
   });
@@ -40,8 +40,12 @@ const HomePage: React.FC = () => {
     <>
       <HeroSection />
       <BannerSection />
-      {isFetching && <SingleRouteSkeleton />}
-      <CategoryComponent setCategory={setCategory} category={category} />
+      <CategoryComponent
+        isFetching={isFetching}
+        setCategory={setCategory}
+        category={category}
+      />
+      {isLoading && <ProductCardSkeleton count={6} />}
       <ProductsSection data={products} />
       <BlogSection />
       <Client />

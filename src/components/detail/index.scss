@@ -85,10 +85,10 @@
         align-items: center;
         justify-content: space-between;
         .detail__quantity {
-          height: 44px;
+          height: 50px;
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          width: 120px;
+          width: 142px;
           border: 1px solid #efefef;
           border-radius: 11px;
           overflow: hidden;
@@ -101,6 +101,13 @@
             svg {
               color: #359740;
               font-size: 20px;
+            }
+            &:disabled {
+              cursor: no-drop;
+              opacity: 0.5;
+              svg {
+                color: #70737c;
+              }
             }
           }
           span {
@@ -142,11 +149,11 @@
           display: flex;
           gap: 12px;
           .wishes__btn {
-            padding: 12px;
             border: 1px solid #efefef;
             background: transparent;
             border-radius: 12px;
             cursor: pointer;
+            width: 50px;
             svg {
               font-size: 24px;
               color: #359740;
@@ -162,6 +169,7 @@
             color: #fff;
             border-radius: 12px;
             border: none;
+            width: 142px;
             cursor: pointer;
             transition: 0.2s;
             &:hover {

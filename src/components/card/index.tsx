@@ -2,8 +2,17 @@ import React from "react";
 import star from "../../assets/images/icons/star.svg";
 import { BsCart } from "react-icons/bs";
 import { ProductsSchema } from "../../context/api/api";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleHeart } from "../../context/slices/heartSlice";
+import {
+  addToCart,
+  decrement,
+  increment,
+  removeFromCart,
+} from "../../context/slices/cartSlice";
+import { FiMinus, FiPlus } from "react-icons/fi";
 
 interface ProductCardPropsSchema {
   data: ProductsSchema;
@@ -11,6 +20,21 @@ interface ProductCardPropsSchema {
 
 const ProductCard: React.FC<ProductCardPropsSchema> = ({ data }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const wishlist = useSelector((s: any) => s.wishlist.value);
+  const cart = useSelector((s: any) => s.cart.value);
+
+  const [productQuantity] = cart.filter(
+    (el: ProductsSchema) => el.id === data?.id
+  );
+
+  const handleDecrement: (data: ProductsSchema) => void = (data) => {
+    dispatch(decrement(data));
+    if (productQuantity.quantity <= 1) {
+      dispatch(removeFromCart(data));
+    }
+  };
+
   return (
     <div className="product__card">
       <div className="product__image">
@@ -21,8 +45,15 @@ const ProductCard: React.FC<ProductCardPropsSchema> = ({ data }) => {
           src={data?.images[0]}
           alt={data?.title}
         />
-        <div className="heart__icon">
-          <AiOutlineHeart />
+        <div
+          onClick={() => dispatch(toggleHeart(data))}
+          className="heart__icon"
+        >
+          {wishlist?.some((item: ProductsSchema) => item.id === data?.id) ? (
+            <AiFillHeart />
+          ) : (
+            <AiOutlineHeart />
+          )}
         </div>
       </div>
       <div className="card__row">
@@ -39,10 +70,28 @@ const ProductCard: React.FC<ProductCardPropsSchema> = ({ data }) => {
         {data?.description}
       </h3>
       <div className="card__row">
-        <h2>${data?.price}</h2>
-        <button>
-          <BsCart />
-        </button>
+        <h2>${Math.round(data?.price)}</h2>
+        {cart.some((item: ProductsSchema) => item.id === data?.id) ? (
+          <div className="detail__quantity">
+            <button
+              disabled={productQuantity.quantity <= 0}
+              onClick={() => handleDecrement(data)}
+            >
+              <FiMinus />
+            </button>
+            <span>{productQuantity.quantity}</span>
+            <button
+              disabled={productQuantity.quantity >= 10}
+              onClick={() => dispatch(increment(data))}
+            >
+              <FiPlus />
+            </button>
+          </div>
+        ) : (
+          <button onClick={() => dispatch(addToCart(data))}>
+            <BsCart />
+          </button>
+        )}
       </div>
     </div>
   );

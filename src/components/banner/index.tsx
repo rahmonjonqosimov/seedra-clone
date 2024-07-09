@@ -13,7 +13,7 @@ const BannerSection: React.FC = () => {
         </div>
         <div className="products__hero">
           <h2>Our products.</h2>
-          <button onClick={() => navigate("/products")}>View all (12)</button>
+          <button onClick={() => navigate("/products")}>View all</button>
         </div>
       </div>
     </section>

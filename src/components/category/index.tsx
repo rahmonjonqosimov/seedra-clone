@@ -5,11 +5,13 @@ import { useGetProductCategoriesQuery } from "../../context/api/api";
 interface CategoryComponentProps {
   setCategory: React.Dispatch<React.SetStateAction<string>>;
   category: string;
+  isFetching: boolean;
 }
 
 const CategoryComponent: React.FC<CategoryComponentProps> = ({
   setCategory,
   category: item,
+  isFetching,
 }) => {
   const { data } = useGetProductCategoriesQuery();
 
@@ -32,7 +34,7 @@ const CategoryComponent: React.FC<CategoryComponentProps> = ({
             color: item === category ? "#fff" : "#000",
           }}
         >
-          {category}
+          {item == category ? (isFetching ? "Loading..." : category) : category}
         </data>
       </li>
     )

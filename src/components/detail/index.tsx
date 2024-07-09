@@ -1,14 +1,36 @@
 import React from "react";
 import { ProductsSchema } from "../../context/api/api";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import "./index.scss";
 import { FiMinus, FiPlus, FiCheck } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  decrement,
+  increment,
+  removeFromCart,
+} from "../../context/slices/cartSlice";
+import { toggleHeart } from "../../context/slices/heartSlice";
 
 interface DetailContentProps {
-  data: ProductsSchema | undefined;
+  data: ProductsSchema;
 }
 
 const DetailContent: React.FC<DetailContentProps> = ({ data }) => {
+  const dispatch = useDispatch();
+  const wishlist = useSelector((s: any) => s.wishlist.value);
+  const cart = useSelector((s: any) => s.cart.value);
+
+  const [productQuantity] = cart?.filter(
+    (item: ProductsSchema) => item.id === data.id
+  );
+
+  const handleDecrement: (data: ProductsSchema) => void = (data) => {
+    dispatch(decrement(data));
+    if (productQuantity.quantity <= 1) {
+      dispatch(removeFromCart(data));
+    }
+  };
   return (
     <section id="detail">
       <div className="container">
@@ -36,15 +58,6 @@ const DetailContent: React.FC<DetailContentProps> = ({ data }) => {
             </span>
             <div className="detail__row">
               <div className="detail__size">2 PACK</div>
-              <div className="detail__quantity">
-                <button>
-                  <FiMinus />
-                </button>
-                <span>0</span>
-                <button>
-                  <FiPlus />
-                </button>
-              </div>
             </div>
             <label htmlFor="radio1">
               <input type="radio" id="radio1" name="radio" />
@@ -81,7 +94,6 @@ const DetailContent: React.FC<DetailContentProps> = ({ data }) => {
               <div className="label__text">
                 <h5>4 pack</h5>
                 <p>
-                  {" "}
                   start from <span>$1,56</span>
                 </p>
               </div>
@@ -102,10 +114,39 @@ const DetailContent: React.FC<DetailContentProps> = ({ data }) => {
                 <h3>${data?.price}</h3>
               </div>
               <div className="wishes__cart">
-                <button className="wishes__btn">
-                  <AiOutlineHeart />
+                <button
+                  onClick={() => dispatch(toggleHeart(data))}
+                  className="wishes__btn"
+                >
+                  {wishlist?.some(
+                    (item: ProductsSchema) => item.id === data.id
+                  ) ? (
+                    <AiFillHeart />
+                  ) : (
+                    <AiOutlineHeart />
+                  )}
                 </button>
-                <button className="cart__btn">Add to card</button>
+                {cart?.some((item: ProductsSchema) => item.id === data.id) ? (
+                  <div className="detail__quantity">
+                    <button onClick={() => handleDecrement(data)}>
+                      <FiMinus />
+                    </button>
+                    <span>{productQuantity.quantity}</span>
+                    <button
+                      disabled={productQuantity.quantity >= 10}
+                      onClick={() => dispatch(increment(data))}
+                    >
+                      <FiPlus />
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => dispatch(addToCart(data))}
+                    className="cart__btn"
+                  >
+                    Add to card
+                  </button>
+                )}
               </div>
             </div>
           </div>
