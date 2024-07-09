@@ -25,7 +25,7 @@ const Detail: React.FC = () => {
           <div style={{ height: "500px" }}></div>
         </>
       ) : (
-        <DetailContent data={data} />
+        data && <DetailContent data={data} />
       )}
       <ProductInformation />
       <Reviews />
