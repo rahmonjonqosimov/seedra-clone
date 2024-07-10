@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import ProductsSection from "../products";
 import "./index.scss";
@@ -9,9 +9,6 @@ const WishlistComponent: React.FC = () => {
   const wishlist = useSelector((s: any) => s.wishlist.value);
   console.log(wishlist);
   const navigate = useNavigate();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <>

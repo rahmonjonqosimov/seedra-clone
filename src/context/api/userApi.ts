@@ -1,22 +1,21 @@
 import { apiSlice } from "./api";
 
 interface ProductQueryParams {
-  url: string;
   category?: string;
   limit?: number;
 }
 
 const extendedApi = apiSlice.injectEndpoints({
   endpoints: (build) => ({
-    getProducts: build.query<any, ProductQueryParams>({
-      query: ({ url, ...params }) => ({
-        url: `products${url}`,
+    getUsersAll: build.query<any, ProductQueryParams>({
+      query: (params) => ({
+        url: `users`,
         params,
       }),
-      providesTags: ["Products"],
+      providesTags: ["Users"],
     }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetProductsQuery } = extendedApi;
+export const { useGetUsersAllQuery } = extendedApi;

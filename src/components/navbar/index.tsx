@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.scss";
 import logo from "../../assets/images/icons/logo.svg";
 import { Link, NavLink } from "react-router-dom";
@@ -8,15 +8,32 @@ import { useSelector } from "react-redux";
 import {
   BiLogoFacebookCircle,
   BiLogoInstagramAlt,
-  BiSearch,
 } from "react-icons/bi";
+import SearchProduct from "./serach/Search";
 
 const Navbar: React.FC = () => {
   const cart = useSelector((s: any) => s.cart.value);
   const wishlist = useSelector((s: any) => s.wishlist.value);
 
+  const [show, setShow] = useState<boolean>(false);
+
+  const handleScroll:()=> void = () => {
+    if (window.scrollY > 300) {
+      setShow(true);
+    } else if (window.scrollY <= 0) {
+      setShow(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <section id="navbar">
+    <section className={`navbar-section ${show ? "nav" : ""}`}>
       <div className="container">
         <div className="navbar">
           <Link to={"/"} className="nav__logo">
@@ -48,10 +65,7 @@ const Navbar: React.FC = () => {
               </Link>
             </li>
           </ul>
-          <div className="search">
-            <input type="search" placeholder="Search" />
-            <BiSearch />
-          </div>
+        <SearchProduct/>
           <ul className="cart__and__wishes">
             <li>
               <Link to={"/wishlist"}>

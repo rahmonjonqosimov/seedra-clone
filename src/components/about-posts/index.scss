@@ -1,10 +1,10 @@
-.about__section {
+.about {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 55px 16px;
   gap: 93px;
-  .about-post {
+  &-post {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -29,6 +29,31 @@
         text-align: left;
         max-width: 521px;
       }
+    }
+  }
+}
+
+@media (max-width: 590px) {
+  .about-post {
+    flex-direction: column;
+    width: 100%;
+    gap: 40px;
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 19px;
+      h2 {
+        max-width: 237px;
+        font-size: 22px;
+        line-height: 34px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 28px;
+      }
+    }
+    &__img img {
+      width: 100%;
     }
   }
 }

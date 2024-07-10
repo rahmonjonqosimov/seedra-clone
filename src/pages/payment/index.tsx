@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import "./index.scss";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
@@ -40,7 +40,9 @@ const Payment: React.FC = () => {
   const [payment, setPayment] = useState<initialStateSchema>(initialState);
   const [cardType, setCardType] = useState<string>("");
   const [shopModel, setShopModel] = useState<initialStateSchema | null>(null);
-  console.log(shopModel);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const navigate = useNavigate();
 

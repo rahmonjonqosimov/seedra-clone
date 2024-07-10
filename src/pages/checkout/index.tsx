@@ -107,7 +107,6 @@ const Checkout: React.FC = () => {
                   allowEmptyFormatting
                   mask="_"
                 />
-                ;
               </div>
             </div>
             <h3>Adress</h3>

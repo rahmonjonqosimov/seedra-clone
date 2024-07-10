@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ProductsSchema,
   useGetProductsQuery,
@@ -29,7 +29,9 @@ const Products: React.FC = () => {
     ? searchItems?.products
     : data?.products;
 
-  console.log(searchItems);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

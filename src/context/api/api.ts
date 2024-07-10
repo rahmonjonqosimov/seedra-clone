@@ -40,7 +40,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://dummyjson.com/",
   }),
-  tagTypes: ["Products"],
+  tagTypes: ["Products", "Users"],
   endpoints: (builder) => ({
     getProducts: builder.query<any, ProductQueryParams>({
       query: ({ url, ...params }) => ({
