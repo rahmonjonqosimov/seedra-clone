@@ -70,13 +70,13 @@ const Contact: React.FC = () => {
                   <div className="contact__context-bottom-detail-icon">
                     <PiPhoneCallFill color="#359640" size={21} />
                   </div>
-                  <h5>+998 93 539 87 17</h5>
+                  <h5>+998 97 667 68 68</h5>
                 </div>
                 <div className="contact__context-bottom-detail">
                   <div className="contact__context-bottom-detail-icon">
                     <MdMarkEmailUnread color="#359640" size={21} />
                   </div>
-                  <h5>mukhlisa.saidaminova08@gmail.com</h5>
+                  <h5>qosimovrahmonjon33@gmail.com</h5>
                 </div>
               </div>
             </div>
